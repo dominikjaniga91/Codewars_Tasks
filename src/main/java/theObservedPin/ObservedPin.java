@@ -31,8 +31,8 @@ public class ObservedPin {
         char object = input.charAt(index);
         int[] tempArr = pinTable.get(object);
 
-        for (int i = 0; i < tempArr.length; i++) {
-            data[index] = tempArr[i];
+        for (int j : tempArr) {
+            data[index] = j;
             if (index == input.length() - 1) {
                 results.add(toString(data));
             } else {
