@@ -1,4 +1,4 @@
-package rangeExtraction;
+package _4kyu.rangeExtraction;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

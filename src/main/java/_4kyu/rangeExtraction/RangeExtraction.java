@@ -1,4 +1,4 @@
-package rangeExtraction;
+package _4kyu.rangeExtraction;
 
 import java.util.*;
 
