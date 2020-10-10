@@ -1,6 +1,6 @@
 package _5kyu.directionsReduction;
 
-import _5kyu.direstionsReduction.DirReduction;
+import _5kyu.direstions.reduction.DirReduction;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
