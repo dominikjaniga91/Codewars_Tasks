@@ -58,4 +58,30 @@ public class RankTest {
                 {"chloe", 43},
         };
     }
+
+    @Test(dataProvider = "namesAndPositions")
+    public void shouldReturnWinningNumberForTheName(String name, int position, int expectedSum) {
+        //when
+        int actualSum = Rank.winningNumber(name, position);
+
+        //then
+        Assert.assertEquals(actualSum, expectedSum);
+    }
+
+    @DataProvider
+    public static Object[][] namesAndPositions() {
+        return new Object[][]{
+                {"addison", 2, 146},
+                {"jayden", 4, 260},
+                {"sofia", 5, 275},
+                {"andrew", 3, 213},
+                {"michael", 1, 58},
+                {"lily", 3, 186},
+                {"benjamin", 3, 228},
+                {"elizabeth", 4, 388},
+                {"natalie", 5, 345},
+                {"jayden", 1, 65},
+                {"chloe", 2, 96},
+        };
+    }
 }
