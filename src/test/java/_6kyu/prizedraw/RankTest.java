@@ -32,4 +32,30 @@ public class RankTest {
         assertEquals("PauL", Rank.nthRank(st, we, 4));
     }
 
+
+    @Test(dataProvider = "names")
+    public void shouldReturnSumOfLetterPositionsInAlphabet(String name, int expectedSum) {
+        //when
+        int actualSum = Rank.getSumOfLetters(name);
+
+        //then
+        Assert.assertEquals(actualSum, expectedSum);
+    }
+
+    @DataProvider
+    public static Object[][] names() {
+        return new Object[][]{
+                {"addison", 66},
+                {"jayden", 59},
+                {"sofia", 50},
+                {"andrew", 65},
+                {"michael", 51},
+                {"lily", 58},
+                {"benjamin", 68},
+                {"elizabeth", 88},
+                {"natalie", 62},
+                {"jayden", 59},
+                {"chloe", 43},
+        };
+    }
 }
