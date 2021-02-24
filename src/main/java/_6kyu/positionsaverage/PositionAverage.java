@@ -4,12 +4,13 @@ import java.util.Arrays;
 import static java.util.stream.IntStream.range;
 
 /**
+ * <a href="https://www.codewars.com/kata/59f4a0acbee84576800000af/train/java">Link to task</>
+ *
  * @author Dominik Janiga
  */
 class PositionAverage {
     public static double posAverage(String s) {
         String[] words = s.split(", ");
-        System.out.println("Words " + Arrays.toString(words));
         int commonPositions = 0;
 
         for (int i = 0; i < words.length - 1; i++) {

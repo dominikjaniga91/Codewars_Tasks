@@ -1,27 +1,30 @@
 package _6kyu.positionsaverage;
 
+import org.assertj.core.api.Assertions;
+import org.assertj.core.data.Offset;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
 
 public class PositionAverageTest {
 
-    private static void assertFuzzy(String s, double exp){
-        System.out.println("Testing " + s);
-        boolean inrange;
-        double merr = 1e-9;
-        double actual = PositionAverage.posAverage(s);
-        inrange = Math.abs(actual - exp) <= merr;
-        if (inrange == false) {
-            System.out.println("Expected mean must be near " + exp +", got " + actual);
-        }
-        assertEquals(true, inrange);
+    @Test(dataProvider = "data")
+    public void posAverage_returnAppropriatePercentage_forGivenStringWithCommonPosition(String words, double result) {
+        //when
+        double actual = PositionAverage.posAverage(words);
+
+        //then
+        Assertions.assertThat(actual)
+                .as("Percentage should be the same")
+                .isCloseTo(result, Offset.offset(0.0000000001));
     }
-    @Test
-    public void test() {
-        assertFuzzy("466960, 069060, 494940, 060069, 060090, 640009, 496464, 606900, 004000, 944096", 26.6666666667);
-        assertFuzzy("444996, 699990, 666690, 096904, 600644, 640646, 606469, 409694, 666094, 606490", 29.2592592593);
-        assertFuzzy("4444444, 4444444, 4444444, 4444444, 4444444, 4444444, 4444444, 4444444", 100);
-        assertFuzzy("0, 0, 0, 0, 0, 0, 0, 0", 100);
+
+    @DataProvider
+    private Object[][] data() {
+        return new Object[][] {
+                {"466960, 069060, 494940, 060069, 060090, 640009, 496464, 606900, 004000, 944096", 26.6666666667},
+                {"444996, 699990, 666690, 096904, 600644, 640646, 606469, 409694, 666094, 606490", 29.2592592593},
+                {"4444444, 4444444, 4444444, 4444444, 4444444, 4444444, 4444444, 4444444", 100},
+                {"0, 0, 0, 0, 0, 0, 0, 0", 100}
+        };
     }
 }
